@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA e o Desenvolvimento de Armas | Trabalho Escolar Interativo</title>
+    <meta name="description" content="Um portal interativo sobre o impacto da Inteligência Artificial no desenvolvimento de armas bélicas, sistemas autônomos (LAWS), pontos positivos, negativos e dilemas éticos.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Canvas Efeito Holográfico e Partículas -->
+    <canvas id="bg-canvas"></canvas>
+    <div class="scanline-overlay"></div>
+
+    <!-- Barra de Navegação Futurista -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-icon">
+                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none">
+                        <circle cx="12" cy="12" r="9"/>
+                        <path d="M12 3v6m0 6v6M3 12h6m6 0h6"/>
+                        <circle cx="12" cy="12" r="3" fill="#00f0ff"/>
+                    </svg>
+                </span>
+                <span class="logo-text">CYBER<span class="highlight">DEFENSE</span>.IA</span>
+            </a>
+
+            <nav class="nav-links" id="nav-links">
+                <a href="#intro" class="nav-item">O que são LAWS?</a>
+                <a href="#tecnologias" class="nav-item">Tecnologias</a>
+                <a href="#duelo" class="nav-item highlight-link">Prós & Contras</a>
+                <a href="#dilemas" class="nav-item">Dilemas Éticos</a>
+                <a href="#linha-do-tempo" class="nav-item">Evolução</a>
+                <a href="#quiz" class="nav-item badge-link">Quiz Interativo</a>
+                <a href="#grupo" class="nav-item">Equipe Escolar</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="sound-btn" class="icon-btn" title="Ativar/Desativar Efeitos Sonoros Sci-Fi">
+                    <span id="sound-icon">🔊</span>
+                </button>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SEÇÃO HERO COM RADAR HUD E APELO VISUAL -->
+        <section class="hero-section" id="hero">
+            <div class="hero-content">
+                <div class="hero-badge animate-pulse">
+                    <span class="badge-dot"></span> TEMA DE PESQUISA ESCOLAR: TECNOLOGIA & SOCIEDADE
+                </div>
+                <h1 class="hero-title">
+                    A REVOLUÇÃO SILENCIOSA: <br>
+                    <span class="gradient-text">A INTELIGÊNCIA ARTIFICIAL</span> NO DESENVOLVIMENTO DE ARMAS
+                </h1>
+                <p class="hero-subtitle">
+                    Das decisões de frações de segundo aos enxames de drones autônomos. 
+                    Estamos diante da <strong>3ª Revolução da Guerra</strong> — um embate fascinante entre a preservação de vidas em combate e o risco de um apocalipse algorítmico.
+                </p>
+
+                <div class="hero-cta-group">
+                    <a href="#duelo" class="btn btn-primary cyber-btn">
+                        <span class="btn-text">EXPLORAR PRÓS & CONTRAS</span>
+                        <span class="btn-glitch"></span>
+                    </a>
+                    <a href="#quiz" class="btn btn-outline">
+                        <span class="btn-text">DESAFIO: QUIZ DO ALUNO 🎮</span>
+                    </a>
+                </div>
+
+                <!-- Painel de Radar e Estatísticas Rápidas -->
+                <div class="hero-stats-panel">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-number" data-target="3">0</span>ª
+                        </div>
+                        <div class="stat-label">Grande Revolução Bélica</div>
+                        <div class="stat-desc">Após a pólvora e as armas nucleares</div>
+                    </div>
+                    <div class="stat-card alert-stat">
+                        <div class="stat-header">
+                            <span class="stat-number" data-target="50">0</span>ms
+                        </div>
+                        <div class="stat-label">Velocidade de Reação</div>
+                        <div class="stat-desc">Mais rápida que o reflexo neural humano</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-number" data-target="100">0</span>+
+                        </div>
+                        <div class="stat-label">Nações em Debate na ONU</div>
+                        <div class="stat-desc">Discutindo a proibição ou controle</div>
+                    </div>
+                    <div class="stat-card warning-stat">
+                        <div class="stat-header">
+                            <span class="stat-number" data-target="100">0</span>%
+                        </div>
+                        <div class="stat-label">Autonomia Letal Possível</div>
+                        <div class="stat-desc">Sistemas que atacam sem ordem humana</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HUD Radar Visual -->
+            <div class="hero-radar-container">
+                <div class="radar-box">
+                    <div class="radar-sweep"></div>
+                    <div class="radar-circle circle-1"></div>
+                    <div class="radar-circle circle-2"></div>
+                    <div class="radar-circle circle-3"></div>
+                    <div class="radar-crosshair-h"></div>
+                    <div class="radar-crosshair-v"></div>
+                    <div class="radar-blip blip-1" data-label="Drone Autônomo"></div>
+                    <div class="radar-blip blip-2" data-label="Escudo Antiaéreo"></div>
+                    <div class="radar-blip blip-3" data-label="Visão Computacional"></div>
+                    <div class="radar-status">
+                        <span class="blink-dot"></span> STATUS: MONITORANDO SISTEMAS BÉLICOS COM IA
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 1: O QUE SÃO ARMAS AUTÔNOMAS (LAWS)? -->
+        <section class="content-section" id="intro">
+            <div class="section-header">
+                <div class="sub-badge">CONCEITO FUNDAMENTAL</div>
+                <h2 class="section-title">O que são <span class="cyan-neon">Sistemas LAWS</span>?</h2>
+                <p class="section-subtitle">
+                    LAWS é a sigla em inglês para <em>Lethal Autonomous Weapons Systems</em> (Sistemas de Armas Autônomas Letais). 
+                    São máquinas e equipamentos militares capazes de buscar, identificar e alvejar alvos sem intervenção humana direta.
+                </p>
+            </div>
+
+            <div class="levels-container">
+                <div class="level-card level-green">
+                    <div class="level-badge">NÍVEL 1</div>
+                    <div class="level-icon">👨‍✈️ ➔ 🤖</div>
+                    <h3>Human-in-the-Loop</h3>
+                    <p class="level-role">Homem no Comando (Decisor Final)</p>
+                    <p class="level-desc">
+                        A IA detecta padrões, calcula trajetórias e aponta opções, mas <strong>o tiro só acontece se um humano apertar o gatilho</strong>. Exemplo: drones guiados por operadores remotos.
+                    </p>
+                    <div class="status-indicator safe">Nível de Risco Ético: Médio</div>
+                </div>
+
+                <div class="level-card level-yellow">
+                    <div class="level-badge">NÍVEL 2</div>
+                    <div class="level-icon">👨‍✈️ ⇄ 🤖</div>
+                    <h3>Human-on-the-Loop</h3>
+                    <p class="level-role">Homem na Supervisão (Pode Abortar)</p>
+                    <p class="level-desc">
+                        O sistema opera e ataca automaticamente devido à extrema velocidade das ameaças, mas <strong>o humano pode intervir e cancelar a ordem</strong>. Exemplo: defesas antimísseis Iron Dome.
+                    </p>
+                    <div class="status-indicator moderate">Nível de Risco Ético: Alto</div>
+                </div>
+
+                <div class="level-card level-red">
+                    <div class="level-badge">NÍVEL 3</div>
+                    <div class="level-icon">❌ ➔ 🤖 💥</div>
+                    <h3>Human-out-of-the-Loop</h3>
+                    <p class="level-role">Autonomia Total (Robôs Assassinos)</p>
+                    <p class="level-desc">
+                        A máquina seleciona alvos e dispara <strong>sem nenhuma supervisão ou confirmação humana</strong>. O algoritmo decide quem vive ou morre com base em parâmetros pré-programados.
+                    </p>
+                    <div class="status-indicator extreme">Nível de Risco Ético: Crítico</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: TECNOLOGIAS EM DESTAQUE -->
+        <section class="content-section dark-alt-bg" id="tecnologias">
+            <div class="section-header">
+                <div class="sub-badge">APLICAÇÕES PRÁTICAS</div>
+                <h2 class="section-title">Como a IA está sendo usada nos <span class="purple-neon">Campos de Batalha</span>?</h2>
+                <p class="section-subtitle">
+                    A IA não é apenas ficção científica de filmes como <em>Exterminador do Futuro</em>. Ela já atua ativamente em conflitos reais de quatro maneiras cruciais:
+                </p>
+            </div>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-card-glow"></div>
+                    <div class="tech-icon-wrapper">
+                        <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#00f0ff" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>Enxames de Drones (Swarm AI)</h3>
+                    <p>
+                        Dezenas ou centenas de microdrones comunicam-se entre si como um formigueiro biológico. Se um drone é derrubado, a rede se reconfigura instantaneamente para saturar defesas inimigas.
+                    </p>
+                    <span class="tech-tag">Inteligência Coletiva</span>
+                </div>
+
+                <div class="tech-card">
+                    <div class="tech-card-glow"></div>
+                    <div class="tech-icon-wrapper">
+                        <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#a855f7" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3>Visão Computacional & Biometria</h3>
+                    <p>
+                        Câmeras térmicas e redes neurais que identificam veículos militares, armamentos e até rostos em meio a florestas e escombros urbanos com precisão microscópica.
+                    </p>
+                    <span class="tech-tag">Reconhecimento Facial</span>
+                </div>
+
+                <div class="tech-card">
+                    <div class="tech-card-glow"></div>
+                    <div class="tech-icon-wrapper">
+                        <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#10b981" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>Sistemas de Defesa Ativa Hipersônica</h3>
+                    <p>
+                        Mísseis supersônicos modernos voam rápido demais para o olho humano reagir. Apenas algoritmos de IA conseguem triangular trajetórias e acionar contramedidas em milissegundos.
+                    </p>
+                    <span class="tech-tag">Interceptação Autônoma</span>
+                </div>
+
+                <div class="tech-card">
+                    <div class="tech-card-glow"></div>
+                    <div class="tech-icon-wrapper">
+                        <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#ff0055" stroke-width="2">
+                            <path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0l1 4H3l1-4"/>
+                            <path d="M10 9h4m-2-2v4"/>
+                        </svg>
+                    </div>
+                    <h3>Guerra Cibernética Autônoma</h3>
+                    <p>
+                        Agentes de IA que invadem satélites, usinas elétricas e redes de telecomunicação, adaptando o código malicioso em tempo real para driblar antivírus e firewalls.
+                    </p>
+                    <span class="tech-tag">Ciberguerra Ofensiva</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: O GRANDE DUELO - PONTOS POSITIVOS VS NEGATIVOS (CORAÇÃO DO TRABALHO) -->
+        <section class="content-section duel-section" id="duelo">
+            <div class="section-header">
+                <div class="sub-badge alert">DEBATE CENTRAL DO TRABALHO</div>
+                <h2 class="section-title">O Grande Confronto: <span class="green-neon">Prós</span> vs <span class="red-neon">Contras</span></h2>
+                <p class="section-subtitle">
+                    Toda tecnologia de uso duplo traz promessas de proteção e perigos assombrosos. Veja como os dois lados do debate se sustentam:
+                </p>
+            </div>
+
+            <!-- Botões de Filtro Rápido -->
+            <div class="duel-tabs">
+                <button class="duel-tab-btn active" data-filter="all">Visão Comparativa Geral</button>
+                <button class="duel-tab-btn tab-pros" data-filter="pros">Apenas Pontos Positivos (Prós)</button>
+                <button class="duel-tab-btn tab-cons" data-filter="cons">Apenas Pontos Negativos (Contras)</button>
+            </div>
+
+            <div class="duel-grid">
+                <!-- COLUNA POSITIVA (VERDE/CIANO) -->
+                <div class="duel-column pros-column" id="col-pros">
+                    <div class="column-header">
+                        <div class="column-title-icon">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#00ff88" stroke-width="3">
+                                <path d="M20 6L9 17l-5-5"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Argumentos Positivos (Defesa & Precisão)</h3>
+                            <span class="col-sub">Defensores da Tecnologia Militar</span>
+                        </div>
+                    </div>
+
+                    <div class="card-list">
+                        <!-- Pró 1 -->
+                        <div class="duel-card pro-card">
+                            <div class="card-num">01</div>
+                            <div class="card-info">
+                                <h4>Preservação de Vidas de Soldados</h4>
+                                <p>
+                                    Robôs terrestres e drones de reconhecimento operam em ambientes tóxicos, contaminados por radiação ou campos minados, evitando o envio de jovens soldados para missões suicidas.
+                                </p>
+                                <span class="quote-tag">"Máquinas são substituíveis; vidas humanas não."</span>
+                            </div>
+                        </div>
+
+                        <!-- Pró 2 -->
+                        <div class="duel-card pro-card">
+                            <div class="card-num">02</div>
+                            <div class="card-info">
+                                <h4>Precisão Cirúrgica e Redução de Danos Colaterais</h4>
+                                <p>
+                                    Sistemas com visão computacional conseguem identificar o alvo exato com cálculo milimétrico de impacto, diminuindo bombardeios indiscriminados e poupando áreas residenciais e hospitais.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Pró 3 -->
+                        <div class="duel-card pro-card">
+                            <div class="card-num">03</div>
+                            <div class="card-info">
+                                <h4>Eliminação do Estresse e Emoções Humanas</h4>
+                                <p>
+                                    Soldados sob fogo cruzado sentem pânico, ódio, cansaço e sede de vingança, o que historicamente causou massacres e crimes de guerra. A IA não sente ódio, cansaço ou fúria; ela apenas obedece regras lógicas.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Pró 4 -->
+                        <div class="duel-card pro-card">
+                            <div class="card-num">04</div>
+                            <div class="card-info">
+                                <h4>Capacidade de Desativação e Varredura Humanitária</h4>
+                                <p>
+                                    A mesma IA utilizada em armas é aplicada na remoção autônoma de minas terrestres deixadas em zonas de guerra e no resgate de feridos em edifícios colapsados.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUNA NEGATIVA (VERMELHO/MAGENTA) -->
+                <div class="duel-column cons-column" id="col-cons">
+                    <div class="column-header">
+                        <div class="column-title-icon">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#ff0055" stroke-width="3">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="15" y1="9" x2="9" y2="15"/>
+                                <line x1="9" y1="9" x2="15" y2="15"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Argumentos Negativos (Riscos & Tragédias)</h3>
+                            <span class="col-sub">Cientistas, ONU e Direitos Humanos</span>
+                        </div>
+                    </div>
+
+                    <div class="card-list">
+                        <!-- Contra 1 -->
+                        <div class="duel-card con-card">
+                            <div class="card-num">01</div>
+                            <div class="card-info">
+                                <h4>Ausência de Empatia e Julgamento Moral</h4>
+                                <p>
+                                    Um algoritmo não compreende a rendição de um soldado desarmado, o medo de uma criança ou as nuances de uma bandeira branca. Decisões de vida ou morte não devem ser reduzidas a funções matemáticas de probabilidade.
+                                </p>
+                                <span class="quote-tag alert">"A máquina não tem alma, consciência ou remorso."</span>
+                            </div>
+                        </div>
+
+                        <!-- Contra 2 -->
+                        <div class="duel-card con-card">
+                            <div class="card-num">02</div>
+                            <div class="card-info">
+                                <h4>Erros Críticos, "Alucinações" e Vieses Algorítmicos</h4>
+                                <p>
+                                    Redes neurais falham. Um agricultor carregando uma enxada pode ser classificado como terrorista armado devido a sombras ou reflexos solares. Quem paga o preço de um "bug" mortal?
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Contra 3 -->
+                        <div class="duel-card con-card">
+                            <div class="card-num">03</div>
+                            <div class="card-info">
+                                <h4>Proliferação Barata e Terrorismo Automatizado</h4>
+                                <p>
+                                    Diferente de bombas nucleares (que exigem urânio e reatores caríssimos), códigos de IA e drones civis podem ser comprados online e modificados por cartéis, milícias e grupos terroristas com baixo custo.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Contra 4 -->
+                        <div class="duel-card con-card">
+                            <div class="card-num">04</div>
+                            <div class="card-info">
+                                <h4>Guerra Sem Custos Humanos Facilita Conflitos</h4>
+                                <p>
+                                    Se os países não tiverem seus próprios cidadãos morrendo nas frentes de batalha, líderes políticos podem iniciar guerras com muito mais facilidade e irresponsabilidade, pois a opinião pública não sentirá a dor dos funerais.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: O DILEMA ÉTICO E JURÍDICO -->
+        <section class="content-section" id="dilemas">
+            <div class="section-header">
+                <div class="sub-badge">FILOSOFIA & DIREITO INTERNACIONAL</div>
+                <h2 class="section-title">O Grande Vácuo de <span class="cyan-neon">Responsabilidade</span></h2>
+                <p class="section-subtitle">
+                    Se uma arma autônoma cometer um massacre contra civis inocentes, <strong>quem vai para o banco dos réus</strong> no Tribunal de Haia?
+                </p>
+            </div>
+
+            <div class="dilemma-interactive-box">
+                <div class="dilemma-card">
+                    <div class="dilemma-target">O Programador?</div>
+                    <p>Ele apenas escreveu o código de treinamento da rede neural meses antes em um laboratório civil.</p>
+                </div>
+                <div class="dilemma-card">
+                    <div class="dilemma-target">O Comandante Militar?</div>
+                    <p>Ele ativou a missão, mas não tinha conhecimento prévio do cálculo exato feito pelo algoritmo na hora do disparo.</p>
+                </div>
+                <div class="dilemma-card">
+                    <div class="dilemma-target">O Fabricante / Empresa?</div>
+                    <p>Argumentará que o equipamento sofreu interferência do ambiente ou foi usado fora dos manuais operacionais.</p>
+                </div>
+                <div class="dilemma-card alert-border">
+                    <div class="dilemma-target">O Algoritmo?</div>
+                    <p>Não se pode prender, julgar moralmente ou punir um conjunto de pesos sinápticos e linhas de software.</p>
+                </div>
+            </div>
+
+            <!-- Caixa de Destaque Campanha Stop Killer Robots -->
+            <div class="quote-banner">
+                <div class="quote-icon">⚠️</div>
+                <div class="quote-text">
+                    <h3>Campanha Global "Stop Killer Robots"</h3>
+                    <p>
+                        Uma coalizão com mais de 180 ONGs mundiais e apoio do Secretário-Geral da ONU defende a criação urgente de um <strong>tratado internacional juridicamente vinculante</strong> para proibir armas totalmente autônomas que alvejem seres humanos.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5: LINHA DO TEMPO DA REVOLUÇÃO BÉLICA -->
+        <section class="content-section dark-alt-bg" id="linha-do-tempo">
+            <div class="section-header">
+                <div class="sub-badge">HISTÓRIA MILITAR</div>
+                <h2 class="section-title">As Três Grandes <span class="purple-neon">Revoluções Armadas</span></h2>
+                <p class="section-subtitle">
+                    Entenda onde a Inteligência Artificial se situa na história da humanidade.
+                </p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Século IX - XIII</div>
+                    <div class="timeline-content">
+                        <h3>1ª Revolução: A Descoberta da Pólvora</h3>
+                        <p>Mudou radicalmente as guerras corpo a corpo com flechas e espadas para artilharia e fuzis, aumentando o alcance destrutivo humano.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">1945</div>
+                    <div class="timeline-content">
+                        <h3>2ª Revolução: A Era Nuclear</h3>
+                        <p>Capacidade de aniquilação em massa instantânea. Criou o conceito de Destruição Mútua Assegurada (MAD) durante a Guerra Fria.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item highlight-timeline">
+                    <div class="timeline-dot pulse"></div>
+                    <div class="timeline-date">Século XXI (Hoje)</div>
+                    <div class="timeline-content">
+                        <h3>3ª Revolução: A Era da Autonomia e IA</h3>
+                        <p>A velocidade das decisões ultrapassa o tempo de resposta biológico. Máquinas tomam a iniciativa estratégica e tática.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 6: QUIZ INTERATIVO PARA TRABALHO ESCOLAR -->
+        <section class="content-section" id="quiz">
+            <div class="section-header">
+                <div class="sub-badge">TESTE SEUS CONHECIMENTOS</div>
+                <h2 class="section-title">Quiz Interativo: <span class="cyan-neon">Você Sobreviveria ao Debate?</span></h2>
+                <p class="section-subtitle">
+                    Demonstre aos seus colegas e ao professor que você dominou o conteúdo desta pesquisa!
+                </p>
+            </div>
+
+            <div class="quiz-container" id="quiz-wrapper">
+                <div class="quiz-progress-bar">
+                    <div class="progress-fill" id="quiz-progress"></div>
+                </div>
+
+                <div class="quiz-box" id="quiz-box">
+                    <div class="quiz-header">
+                        <span class="question-number" id="question-count">Pergunta 1 de 4</span>
+                        <span class="score-tracker" id="score-tracker">Pontos: 0</span>
+                    </div>
+
+                    <h3 class="quiz-question" id="quiz-question">Carregando pergunta...</h3>
+
+                    <div class="quiz-options" id="quiz-options">
+                        <!-- Gerado via JavaScript -->
+                    </div>
+
+                    <div class="quiz-feedback hidden" id="quiz-feedback">
+                        <!-- Mensagem de resposta correta/incorreta com explicação -->
+                    </div>
+
+                    <div class="quiz-actions">
+                        <button class="btn btn-primary hidden" id="next-q-btn">Próxima Pergunta ➔</button>
+                    </div>
+                </div>
+
+                <div class="quiz-result-box hidden" id="quiz-result">
+                    <div class="trophy-icon">🏆</div>
+                    <h3>Quiz Concluído com Sucesso!</h3>
+                    <p class="final-score-text" id="final-score-text">Você acertou 4 de 4 perguntas.</p>
+                    <p class="result-evaluation" id="result-evaluation">Excelente! Você domina os aspectos éticos e técnicos da IA na guerra.</p>
+                    <button class="btn btn-outline" id="restart-quiz-btn">Jogar Novamente 🔄</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 7: CONCLUSÃO E IDENTIFICAÇÃO DO GRUPO ESCOLAR -->
+        <section class="content-section dark-alt-bg" id="grupo">
+            <div class="section-header">
+                <div class="sub-badge">CONSIDERAÇÕES FINAIS & FICHA DO TRABALHO</div>
+                <h2 class="section-title">Conclusão Escolar & <span class="purple-neon">Equipe</span></h2>
+            </div>
+
+            <div class="conclusion-box">
+                <h3>Síntese da Pesquisa</h3>
+                <p>
+                    A Inteligência Artificial no desenvolvimento bélico não é um debate sobre o futuro remoto, mas uma realidade urgente que já transforma a geopolítica global. Se por um lado oferece sistemas de proteção rápidos contra mísseis e reduz a perda de soldados humanos, por outro lado retira a compaixão e o discernimento ético do campo de batalha. O maior desafio da nossa geração é estabelecer tratados multilaterais rigorosos para garantir que nenhuma máquina receba o poder irrevogável de decidir a morte de um ser humano.
+                </p>
+            </div>
+
+            <!-- Cartão Escolar Editável (Nome dos Alunos, Turma, Professor) -->
+            <div class="student-card-wrapper">
+                <div class="school-card">
+                    <div class="school-card-header">
+                        <span class="folder-tag">TRABALHO ESCOLAR / ACADÊMICO</span>
+                        <button class="edit-badge-btn" id="edit-team-btn" title="Editar dados da equipe">✏️ Personalizar Nomes</button>
+                    </div>
+
+                    <div class="school-info-grid">
+                        <div class="school-field">
+                            <span class="field-label">Tema da Pesquisa:</span>
+                            <span class="field-val" id="val-tema">A IA e o Desenvolvimento de Armas</span>
+                        </div>
+                        <div class="school-field">
+                            <span class="field-label">Disciplina / Matéria:</span>
+                            <span class="field-val" id="val-materia">Sociologia / Filosofia / Informática Aplicada</span>
+                        </div>
+                        <div class="school-field">
+                            <span class="field-label">Professor(a):</span>
+                            <span class="field-val" id="val-prof">Prof. Responsável</span>
+                        </div>
+                        <div class="school-field">
+                            <span class="field-label">Série / Turma:</span>
+                            <span class="field-val" id="val-turma">Ensino Médio / Técnico</span>
+                        </div>
+                        <div class="school-field full-width">
+                            <span class="field-label">Integrantes do Grupo:</span>
+                            <div class="team-names" id="val-integrantes">
+                                <span class="student-pill">👤 Aluno 1</span>
+                                <span class="student-pill">👤 Aluno 2</span>
+                                <span class="student-pill">👤 Aluno 3</span>
+                                <span class="student-pill">👤 Aluno 4</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Edição dos Dados do Grupo -->
+    <div class="modal-overlay hidden" id="team-modal">
+        <div class="modal-card">
+            <h3>Personalizar Dados do Trabalho Escolar</h3>
+            <p>Preencha os nomes do seu grupo e do professor para exibir na apresentação:</p>
+            <div class="modal-inputs">
+                <label>Nomes dos Integrantes (separados por vírgula):</label>
+                <input type="text" id="input-integrantes" placeholder="Ex: Lucas Moura, Ana Silva, Gabriel Lima">
+
+                <label>Nome do Professor:</label>
+                <input type="text" id="input-prof" placeholder="Ex: Prof. Carlos Eduardo">
+
+                <label>Turma / Ano:</label>
+                <input type="text" id="input-turma" placeholder="Ex: 3º Ano B - Ensino Médio">
+
+                <label>Matéria:</label>
+                <input type="text" id="input-materia" placeholder="Ex: Filosofia / Atualidades">
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-outline" id="modal-cancel-btn">Cancelar</button>
+                <button class="btn btn-primary" id="modal-save-btn">Salvar Dados</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- RODAPÉ COM FONTES E CRÉDITOS -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">CYBER<span class="highlight">DEFENSE</span>.IA</div>
+                <p>Website educacional e interativo desenvolvido para apresentação e defesa de trabalho escolar sobre Ética e Inteligência Artificial.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Fontes e Leituras Recomendadas</h4>
+                <ul class="footer-sources">
+                    <li>🌐 <a href="https://www.stopkillerrobots.org" target="_blank" rel="noopener">Campanha Stop Killer Robots (stopkillerrobots.org)</a></li>
+                    <li>🕊️ <a href="https://www.icrc.org/pt" target="_blank" rel="noopener">Comitê Internacional da Cruz Vermelha (ICRC)</a></li>
+                    <li>📜 <a href="https://www.un.org/disarmament" target="_blank" rel="noopener">ONU - Escritório para Assuntos de Desarmamento (UNODA)</a></li>
+                    <li>⚡ Declaração de Asilomar sobre IA Benéfica (FLI)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 - Trabalho Escolar de Pesquisa | Desenvolvido com HTML5, CSS Futurista e JavaScript.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
